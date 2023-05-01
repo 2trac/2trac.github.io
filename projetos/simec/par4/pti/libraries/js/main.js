@@ -11,7 +11,7 @@ function salvarRespostaTermo(opcao, opcao_anteiror) {
         $('#adpresposta').val('S');
         statusMsg = 'Seu status atual é: Adesão Pendente. \n\n';
         msg = statusMsg + 'Tem certeza que deseja realizar a adesão ao Programa Tempo Integral?';
-        msgTitle = "Termo";
+        msgTitle = "Adesão do Termo";
         colorBtn = "#1AB394";
     }
 
@@ -19,7 +19,7 @@ function salvarRespostaTermo(opcao, opcao_anteiror) {
         $('#adpresposta').val('N');
         statusMsg = 'Seu status atual é: Adesão Pendente. \n\n';
         msg = statusMsg + 'Tem certeza que deseja não realizar a adesão ao Programa Tempo Integral?';
-        msgTitle = "Termo";
+        msgTitle = "Não Adesão ao Termo";
         colorBtn = "#ed5565";
     }
 
@@ -28,12 +28,12 @@ function salvarRespostaTermo(opcao, opcao_anteiror) {
         if (opcao_anteiror == 'S') {
             statusMsg = 'Seu status atual é: Adesão Realizada. \n\n';
             msg = statusMsg + 'Tem certeza que deseja cancelar a Adesão ao Programa Tempo Integral?';
-            msgTitle = "Cancelamento de Termo";
+            msgTitle = "Cancelamento da Adesão";
         }
         if (opcao_anteiror == 'N') {
             statusMsg = 'Seu status atual é: Adesão Não Realizada. \n\n';
             msg = statusMsg + 'Tem certeza que deseja cancelar a Adesão Não Realizada?';
-            msgTitle = "Cancelamento de Termo";
+            msgTitle = "Cancelamento da Não Adesão";
         }
 
         colorBtn = "#f8ac59";
