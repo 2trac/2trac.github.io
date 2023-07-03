@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+
+  nayara_web:
+    container_name: nayara_web
+    image: wordpress
+    ports:
+      - 8080:80
+    links:
+      - nayara_db
+    volumes:
+        - wordpress-data:/var/www/html
+
+  nayara_db:
+    container_name: nayara_db
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - "8081:3600"
+    environment:
+      MYSQL_ROOT_PASSWORD: dbwordpress
+      MYSQL_USER: dbwordpress
+      MYSQL_DATABASE: dbwordpress
+      MYSQL_PASSWORD: dbwordpress
+    volumes:
+        - mysql-data:/var/lib/mysql
+
+  nayara_code_editor:
+    image: lscr.io/linuxserver/cloud9:latest
+    container_name: nayara_code_editor
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - "USERNAME=nayara"
+      - "PASSWORD=nayara"
+    links:
+      - nayara_web
+    volumes:
+      - wordpress-data:/code
+    ports:
+      - 8083:8000
+    restart: unless-stopped
+
+volumes:
+  - wordpress-data;
+  - mysql-data;
